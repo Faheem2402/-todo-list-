@@ -3,198 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faheem Shaikh's To-Do List</title>
+    <title>My Personal Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
             margin: 0;
-        }
-
-        .header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .header img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .header div {
-            text-align: center;
-        }
-
-        .date-time {
-            margin-bottom: 20px;
-            font-size: 1.2em;
-            color: #555;
-        }
-
-        .todo-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            width: 350px;
-            text-align: center;
-        }
-
-        input[type="text"] {
-            width: 70%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        ul {
-            list-style-type: none;
             padding: 0;
-            margin-top: 10px;
+            box-sizing: border-box;
         }
 
-        li {
-            background-color: #e4e4e4;
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        button {
-            background-color: #ff6b6b;
-            border: none;
-            padding: 5px;
+        header {
+            background-color: #333;
             color: white;
-            border-radius: 3px;
-            cursor: pointer;
+            padding: 20px;
+            text-align: center;
         }
 
-        button:hover {
-            background-color: #ff4a4a;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <img src="your-photo.jpg" alt="Faheem Shaikh" />
-        <div>
-            <h1>Faheem Shaikh's To-Do List</h1>
-            <p class="date-time" id="dateTime"></p>
-        </div>
-    </div>
-    <div class="todo-container">
-        <h2>To-Do List</h2>
-        <input type="text" id="taskInput" placeholder="Add a new task...">
-        <button onclick="addTask()">Add</button>
-        <ul id="taskList"></ul>
-    </div>
-
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            const formattedDate = now.toLocaleDateString();
-            const formattedTime = now.toLocaleTimeString();
-            document.getElementById("dateTime").textContent = `Date: ${formattedDate} | Time: ${formattedTime}`;
+        nav {
+            margin: 20px auto;
+            text-align: center;
         }
 
-        setInterval(updateDateTime, 1000);
-
-        function addTask() {
-            const taskInput = document.getElementById("taskInput");
-            const taskList = document.getElementById("taskList");
-
-            if (taskInput.value.trim() !== "") {
-                const li = document.createElement("li");
-                const serialNo = taskList.childElementCount + 1;
-                li.textContent = `${serialNo}. ${taskInput.value}`;
-
-                const deleteButton = document.createElement("button");
-                deleteButton.textContent = "Delete";
-                deleteButton.onclick = () => li.remove();
-
-                li.appendChild(deleteButton);
-                taskList.appendChild(li);
-                taskInput.value = "";
-            }
-        }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faheem Shaikh's To-Do List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
             color: #333;
+            font-weight: bold;
         }
 
-        #timer {
-            font-size: 24px;
-            color: #ff4500;
-            margin-top: 20px;
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Faheem Shaikh's To-Do List</h1>
-    </div>
-
-    <div id="timer">Loading timer...</div>
-
-    <script>
-        // Calculate the target date (11,165 days from today)
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 11165);
-
-        function updateTimer() {
-            const now = new Date();
-            const timeLeft = targetDate - now;
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").textContent = 
-                `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds left!`;
-        }
-
-        setInterval(updateTimer, 1000);
-    </script>
+    <header>
+        <h1>Welcome to My Personal Website</h1>
+    </header>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi! I'm Faheem, a passionate developer eager to build impactful solutions. I love coding and exploring new technologies.</p>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React, Node.js</li>
+            <li>Python, Java</li>
+            <li>Git & GitHub</li>
+        </ul>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Check out my projects on <a href="https://github.com/Faheem2402" target="_blank">GitHub</a>.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: faheem@example.com</p>
+        <p>LinkedIn: <a href="#">Faheem's LinkedIn</a></p>
+    </section>
+    <footer>
+        &copy; 2025 Faheem Shaikh. All Rights Reserved.
+    </footer>
 </body>
 </html>
